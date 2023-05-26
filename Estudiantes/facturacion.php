@@ -1,3 +1,12 @@
+<?php
+  require_once('config.php');
+
+  $data = new Config();
+
+  $all = $data -> obtainAll();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -54,19 +63,31 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">NOMBRES</th>
-              <th scope="col">DIRECCION</th>
-              <th scope="col">LOGROS</th>
+              <th scope="col">DESCRIPCION</th>
+              <th scope="col">IMAGEN</th>
               <th scope="col">DETALLE</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
 
+            <?php
+              foreach ($all as $key => $val){
+            ?>
+            <tr>
+              <td><?php echo $val['id'] ?></td>
+              <td><?php echo $val['categoriaNombre'] ?></td>
+              <td><?php echo $val['descripcion'] ?></td>
+              <td><img class="imagenProd" src="imagenProducto/<?php echo $val['imagen'] ?>" alt="NADA"></td>
+              <td><a class="btn btn-danger" href="">BORRAR</a></td>
+            </tr>
+
+            <?php
+              }
+            ?>
           </tbody>
-        
+                
         </table>
 
       </div>
@@ -94,33 +115,33 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" action="registrarFactura.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="nombreCategorias" class="form-label">Nombre Categoria: </label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  id="nombreCategorias"
+                  name="nombreCategorias"
                   class="form-control"  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
+                <label for="descripcion" class="form-label">Descripcion: </label>
                 <input 
                   type="text"
-                  id="direccion"
-                  name="direccion"
+                  id="descripcion"
+                  name="descripcion"
                   class="form-control"  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="imagen" class="form-label">Imagen</label>
                 <input 
-                  type="text"
-                  id="logros"
-                  name="logros"
+                  type="file"
+                  id="imagen"
+                  name="imagen"
                   class="form-control"  
                  
                 />
