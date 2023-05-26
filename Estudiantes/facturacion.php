@@ -80,7 +80,11 @@
               <td><?php echo $val['categoriaNombre'] ?></td>
               <td><?php echo $val['descripcion'] ?></td>
               <td><img class="imagenProd" src="imagenProducto/<?php echo $val['imagen'] ?>" alt="NADA"></td>
-              <td><a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a></td>
+              <td>
+                <a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <a class="btn btn-warning" href="actualizarFactura.php?id=<?= $val['id']?>">Editar</a>
+              </td>
+              
             </tr>
 
             <?php

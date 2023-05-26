@@ -85,5 +85,24 @@ error_reporting(E_ALL);
                 return $e->getMessage();
             }
         }
+
+        public function selectOne(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT * FROM categorias WHERE id = ?");
+                $stm -> execute([$this -> id]);
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e -> getMessage();
+            }
+        }
+
+        public function update(){
+            try {
+                $stm = $this -> dbCnx -> prepare("UPDATE categorias SET categoriaNombre = ?, descripcion = ?, imagen = ? WHERE id = ?");
+                $stm -> execute([$this->nombreCategoria, $this->descripcion, $this->imagen, $this->id]);
+            } catch (Exception $e) {
+                return $e -> getMessage();
+            }
+        }
     }
 ?>
