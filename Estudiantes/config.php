@@ -24,11 +24,11 @@ error_reporting(E_ALL);
             $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
         }
 
-        public function setID($id) {
+        public function setId($id) {
             $this->id = $id;
         }
     
-        public function getID() {
+        public function getId() {
             return $this->id;
         }
     
@@ -70,6 +70,17 @@ error_reporting(E_ALL);
                 $stm = $this -> dbCnx -> prepare("SELECT * FROM categorias");
                 $stm -> execute();
                 return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function delete(){
+            try {
+                $stm = $this -> dbCnx -> prepare("DELETE FROM categorias WHERE id = ?");
+                $stm -> execute([$this->id]);
+                return $stm -> fetchAll();
+                echo "<script>alert('Registro eliminado');document.location='estudiantes.php'</script>";
             } catch (Exception $e) {
                 return $e->getMessage();
             }
