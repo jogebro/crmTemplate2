@@ -7,12 +7,12 @@ error_reporting(E_ALL);
 
     require_once("../config.php");
 
-    $record = new ConfigCategorias();
+    $record = new ConfigClientes();
     if(isset($_GET['id']) && isset($_GET['req'])){
         if ($_GET['req'] == "delete"){
             $record -> setId($_GET['id']);
             $record -> delete();
-            echo "<script>alert('Dato borrado satisfactoriamente');document.location='categorias.php'</script>";
+            echo "<script>alert('Dato borrado satisfactoriamente');document.location='clientes.php'</script>";
         }
     }
 

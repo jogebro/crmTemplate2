@@ -1,6 +1,6 @@
 <?php
     require_once("../config.php"); 
-    $data = new ConfigCategorias();
+    $data = new ConfigEmpleados();
 
     $id = $_GET['id'];
     $data -> setId($id);
@@ -10,17 +10,18 @@
     $val = $record[0];
 
     if (isset($_POST['editar'])){
-        $data -> setNombreCategoria($_POST['categoriaNombre']);
-        $data -> setDescripcion($_POST['descripcion']);
+        $data -> setNombreEmpleado($_POST['empleadoNombre']);
+        $data -> setCelular($_POST['celular']);
+        $data -> setDireccion($_POST['direccion']);
         if (!empty($_FILES['imagen']['name'])) {
             $data -> setImagen($_FILES['imagen']['name']);
-            move_uploaded_file($_FILES['imagen']['tmp_name'], 'imagenCategoria/'.$_FILES['imagen']['name']);
+            move_uploaded_file($_FILES['imagen']['tmp_name'], 'imagenEmpleados/'.$_FILES['imagen']['name']);
         } else {
             $data -> setImagen($val['imagen']);
         }
 
         $data -> update();
-        echo "<script>alert('Datos actualizados correctamente');document.location='categorias.php'</script>";
+        echo "<script>alert('Datos actualizados correctamente');document.location='empleados.php'</script>";
     }
 
 ?>
@@ -75,10 +76,21 @@
                 <label for="nombres" class="form-label">Nombres</label>
                 <input 
                   type="text"
-                  id="categoriaNombre"
-                  name="categoriaNombre"
+                  id="empleadoNombre"
+                  name="empleadoNombre"
                   class="form-control"  
-                  value = "<?php echo $val['categoriaNombre'] ?>"
+                  value = "<?php echo $val['empleadoNombre'] ?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="celular" class="form-label">Celular</label>
+                <input 
+                  type="number"
+                  id="celular"
+                  name="celular"
+                  class="form-control"  
+                  value = "<?php echo $val['celular'] ?>"
                 />
               </div>
 
@@ -86,10 +98,10 @@
                 <label for="direccion" class="form-label">Direccion</label>
                 <input 
                   type="text"
-                  id="descripcion"
-                  name="descripcion"
+                  id="direccion"
+                  name="direccion"
                   class="form-control"  
-                  value = "<?php echo $val['descripcion'] ?>"
+                  value = "<?php echo $val['direccion'] ?>"
                  
                 />
               </div>

@@ -6,3 +6,18 @@ CREATE TABLE categorias(
     descripcion VARCHAR (50),
     imagen VARBINARY(50)
 );
+
+CREATE TABLE clientes(
+    id INT primary key AUTO_INCREMENT,
+    clienteNombre VARCHAR (50) NOT NULL,
+    celular VARCHAR (50),
+    compañia VARCHAR (50)
+);
+
+CREATE TABLE empleados(
+    id INT primary key AUTO_INCREMENT,
+    empleadoNombre VARCHAR (50) NOT NULL,
+    celular VARCHAR (50),
+    direccion VARCHAR (50),
+    imagen VARBINARY(50)
+);
