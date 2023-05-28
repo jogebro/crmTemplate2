@@ -15,7 +15,7 @@ error_reporting(E_ALL);
         $config -> setImagen($_POST['imagen']);
 
         $config -> insertData();
-        echo "<script>alert('datos guardados');document.location='facturacion.php'</script>";
+        echo "<script>alert('datos guardados');document.location='categorias.php'</script>";
     }
 
 ?>

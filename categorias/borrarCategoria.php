@@ -12,7 +12,7 @@ error_reporting(E_ALL);
         if ($_GET['req'] == "delete"){
             $record -> setId($_GET['id']);
             $record -> delete();
-            echo "<script>alert('Dato borrado satisfactoriamente');document.location='facturacion.php'</script>";
+            echo "<script>alert('Dato borrado satisfactoriamente');document.location='categorias.php'</script>";
         }
     }
 

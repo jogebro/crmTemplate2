@@ -6,7 +6,7 @@ ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
 
-    require_once("db.php");
+    require_once("../db.php");
 
     class Config{
         private $id;
@@ -80,7 +80,7 @@ error_reporting(E_ALL);
                 $stm = $this -> dbCnx -> prepare("DELETE FROM categorias WHERE id = ?");
                 $stm -> execute([$this->id]);
                 return $stm -> fetchAll();
-                echo "<script>alert('Registro eliminado');document.location='estudiantes.php'</script>";
+                echo "<script>alert('Registro eliminado');document.location='categorias.php'</script>";
             } catch (Exception $e) {
                 return $e->getMessage();
             }

@@ -23,7 +23,7 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 
-  <link rel="stylesheet" type="text/css" href="css/estudiantes.css">
+  <link rel="stylesheet" type="text/css" href="../css/supermarket.css">
 
 </head>
 
@@ -34,7 +34,7 @@
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">SuperMarket</h3>
-        <img src="images/logoSuperMarket.png" alt="" class="imagenPerfil">
+        <img src="../images/logoSuperMarket.png" alt="" class="imagenPerfil">
         <h3>Joel Abril</h3>
       </div>
       <div class="menus">
@@ -79,10 +79,10 @@
               <td><?php echo $val['id'] ?></td>
               <td><?php echo $val['categoriaNombre'] ?></td>
               <td><?php echo $val['descripcion'] ?></td>
-              <td><img class="imagenProd" src="imagenProducto/<?php echo $val['imagen'] ?>" alt="NADA"></td>
+              <td><img class="imagenProd" src="../imagenProducto/<?php echo $val['imagen'] ?>" alt="NADA"></td>
               <td>
-                <a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
-                <a class="btn btn-warning" href="actualizarFactura.php?id=<?= $val['id']?>">Editar</a>
+                <a class="btn btn-danger" href="borrarCategoria.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <a class="btn btn-warning" href="actualizarCategoria.php?id=<?= $val['id']?>">Editar</a>
               </td>
               
             </tr>
@@ -119,7 +119,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarFactura.php" method="post">
+            <form class="col d-flex flex-wrap" action="registrarCategoria.php" method="post">
               <div class="mb-1 col-12">
                 <label for="nombreCategorias" class="form-label">Nombre Categoria: </label>
                 <input 
