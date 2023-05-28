@@ -59,6 +59,10 @@ $all = $data -> obtainAll();
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
         </a>
+        <a href="../facturas/facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+        </a>
        
 
 
@@ -112,7 +116,6 @@ $all = $data -> obtainAll();
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 
@@ -127,7 +130,7 @@ $all = $data -> obtainAll();
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Estudiante</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Cliente</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">

@@ -3,7 +3,7 @@
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
-
+    
 error_reporting(E_ALL);
 
     require_once("db.php");
@@ -308,6 +308,46 @@ error_reporting(E_ALL);
                 $stm -> execute([$this->nombreEmpleado, $this->celular, $this->direccion, $this->imagen, $this->id]);
             } catch (Exception $e) {
                 return $e -> getMessage();
+            }
+        }
+    }
+
+    class ConfigFacturas{
+        private $id;
+        private $id_cliente;
+        private $id_empleado;
+        private $fecha;
+        protected $dbCnx;
+
+        public function __construct($id = 0, $fecha = ''){
+            $this->id = $id;
+            $this->fecha = $fecha;
+
+            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        }
+
+        public function setId($id) {
+            $this->id = $id;
+        }
+    
+        public function getId() {
+            return $this->id;
+        }
+
+        public function setFecha($fecha) {
+            $this->fecha = $fecha;
+        }
+    
+        public function getFecha() {
+            return $this->fecha;
+        }
+
+        public function insertData() {
+            try {
+                $stmt = $this->dbCnx->prepare("INSERT INTO facturas (id_cliente, id_empleado, fecha) VALUES (?, ?, ?)");
+                $stmt->execute([$this->id_cliente, $this->id_empleado, $this->fecha]);
+            } catch (Exception $e) {
+                return $e->getMessage();
             }
         }
     }

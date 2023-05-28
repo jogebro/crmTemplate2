@@ -21,3 +21,12 @@ CREATE TABLE empleados(
     direccion VARCHAR (50),
     imagen VARBINARY(50)
 );
+
+CREATE TABLE facturas(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_empleado INT,
+    id_cliente INT,
+    fecha VARCHAR(50),
+    Foreign Key (id_empleado) REFERENCES empleados(id),
+    Foreign Key (id_cliente) REFERENCES clientes(id)
+);

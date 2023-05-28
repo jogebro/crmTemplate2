@@ -45,7 +45,10 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
         </a>
-       
+        <a href="facturas/facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+        </a>
 
 
       </div>
@@ -65,7 +68,6 @@
     
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 
