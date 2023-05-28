@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página </title>
+  <title>SuperMarket </title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -33,18 +33,18 @@
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
-        <h3>Maicol Estrada</h3>
+        <h3 style="margin-bottom: 2rem;">SuperMarket</h3>
+        <img src="images/logoSuperMarket.png" alt="" class="imagenPerfil">
+        <h3>Joel Abril</h3>
       </div>
       <div class="menus">
         <a href="/Home/home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;">Home</h3>
         </a>
-        <a href="estudiantes.php" style="display: flex;gap:1px;">
+        <a href="categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Estudiantes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Categorias</h3>
         </a>
        
 
@@ -54,7 +54,7 @@
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
+        <h2>Categorias</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -62,7 +62,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBRES</th>
+              <th scope="col">NOMBRE</th>
               <th scope="col">DESCRIPCION</th>
               <th scope="col">IMAGEN</th>
               <th scope="col">DETALLE</th>

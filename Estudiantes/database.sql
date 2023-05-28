@@ -1,4 +1,4 @@
-CREATE DATABASE facturacion
+CREATE DATABASE superMarket;
 
 CREATE TABLE categorias(
     id INT primary key AUTO_INCREMENT,
