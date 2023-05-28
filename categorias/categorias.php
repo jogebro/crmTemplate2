@@ -45,7 +45,7 @@ error_reporting(E_ALL);
         <h3>Joel Abril</h3>
       </div>
       <div class="menus">
-        <a href="/Home/home.php" style="display: flex;gap:2px;">
+        <a href="../home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;">Home</h3>
         </a>

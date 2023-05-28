@@ -50,7 +50,7 @@
         <h3 >Maicol Estrada</h3>
       </div>
       <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
+        <a href="../home.html" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;font-weight: 800;">Home</h3>
         </a>
