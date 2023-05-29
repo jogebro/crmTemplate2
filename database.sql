@@ -1,5 +1,7 @@
 CREATE DATABASE superMarket;
 
+USE superMarket;
+
 CREATE TABLE categorias(
     id INT primary key AUTO_INCREMENT,
     categoriaNombre VARCHAR (50) NOT NULL,

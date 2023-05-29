@@ -74,6 +74,9 @@ body{
     text-decoration: none;
     font-weight: lighter;
     color: black;
+    padding: 0.5rem;
+    transition: all 200ms ease-in-out;
+    border-radius: 10px;
   }
 
 
@@ -90,15 +93,14 @@ body{
 
   .menus h3{
     font-weight: lighter;
-    font-size:large
+    font-size:large;
    
   }
   
    .menus a:hover{
     background-color:rgb(74, 74, 97);
-    padding: 2px;
-    border-radius: 10px;
     color: #fff9f9;
+    transform: scale(1);
   }
 
 
