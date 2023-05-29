@@ -10,6 +10,8 @@ error_reporting(E_ALL);
 
         $config = new ConfigFacturas();
 
+        $config -> setIdCliente($_POST['id_cliente']);
+        $config -> setIdEmpleado($_POST['id_empleado']);
         $config -> setFecha($_POST['fecha']);
 
         $config -> insertData();

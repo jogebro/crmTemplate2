@@ -26,13 +26,15 @@ CREATE TABLE empleados(
 
 CREATE TABLE facturas(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    id_empleado INT,
     id_cliente INT,
+    id_empleado INT,
     fecha VARCHAR(50),
-    Foreign Key (id_empleado) REFERENCES empleados(id),
-    Foreign Key (id_cliente) REFERENCES clientes(id)
+    Foreign Key fk_id_empleado (id_empleado) REFERENCES empleados(id),
+    Foreign Key fk_id_cliente (id_cliente) REFERENCES clientes(id)
 );
 
+DROP TABLE facturas;
+DESCRIBE facturas;
 CREATE TABLE proveedores(
     id INT primary key AUTO_INCREMENT,
     proveedorNombre VARCHAR (50) NOT NULL,

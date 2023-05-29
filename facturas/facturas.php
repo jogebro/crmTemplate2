@@ -1,3 +1,20 @@
+<?php
+
+ini_set("display_errors", 1);
+
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL);
+
+  require_once('../config.php');
+
+  $data = new ConfigFacturas();
+
+  $all = $data -> obtainAll();
+  $empleado = $data-> obtainEmpleado();
+  $cliente = $data-> obtainCliente();
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +93,24 @@
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
+            <?php
+              foreach ($all as $key => $val){
+            ?>
+            <tr>
+              <td><?php echo $val['id'] ?></td>
+              <td><?php echo $val['clienteNombre'] ?></td>
+              <td><?php echo $val['empleadoNombre'] ?></td>
+              <td><?php echo $val['fecha'] ?></td>
+              <td>
+                <a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <a class="btn btn-warning" href="actualizarFactura.php?id=<?= $val['id']?>">Editar</a>
+              </td>
+              
+            </tr>
 
+            <?php
+              }
+            ?>
           </tbody>
                 
         </table>
@@ -108,15 +142,29 @@
             <form class="col d-flex flex-wrap" action="registrarFactura.php" method="post">
               <div class="mb-1 col-12">
                 <label for="cliente" class="form-label">Nombre Cliente: </label>
-                <select name="cliente" id="cliente" class="form-control">
+                <select name="id_cliente" id="id_cliente" class="form-control">
                   <option value="">Seleccione cliente</option>
-                </select>
+                  <?php 
+                    foreach ($cliente as $key => $valC) {
+                  ?>
+                    <option value="<?php echo $valC['id'] ?>"><?php echo $valC['clienteNombre'] ?></option>
+                  <?php 
+                    }
+                  ?>
+                </select> 
               </div>
 
               <div class="mb-1 col-12">
                 <label for="empleado" class="form-label">Nombre Empleado: </label>
-                <select name="empleado" id="empleado" class="form-control">
-                  <option value="empleado">Seleccione empleado</option>
+                <select name="id_empleado" id="id_empleado" class="form-control">
+                  <option value="">Seleccione empleado</option>
+                  <?php 
+                    foreach ($empleado as $key => $valE) {
+                  ?>
+                    <option value="<?php echo $valE['id'] ?>"><?php echo $valE['empleadoNombre'] ?></option>
+                  <?php 
+                    }
+                  ?>
                 </select>
               </div>
 
