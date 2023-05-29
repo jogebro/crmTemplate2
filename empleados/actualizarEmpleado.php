@@ -52,28 +52,18 @@
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camp Skiler.</h3>
-        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
-        <h3 >Maicol Estrada</h3>
-      </div>
-      <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
-          <i class="bi bi-house-door"> </i>
-          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
-        </a>
-        <a href="/Estudiantes/Estudiantes.html" style="display: flex;gap:2px;">
-          <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
-        </a>
+        <h3 style="margin-bottom: 2rem;">SuperMarKet</h3>
+        <img src="../images/logoSuperMarket.png" alt="..." class="imagenPerfil">
+        <h3 >Joel Abril</h3>
       </div>
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Estudiante a Editar</h2>
+        <h2 class="m-2">Empleado a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action="" enctype="multipart/form-data"  method="post">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="empleadoNombre" class="form-label">Nombre Empleado</label>
                 <input 
                   type="text"
                   id="empleadoNombre"
@@ -107,7 +97,7 @@
               </div>
 
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Imagen</label>
+                <label for="imagen" class="form-label">Imagen</label>
                 <input 
                   type="file"
                   id="imagen"

@@ -1,3 +1,11 @@
+<?php
+  require_once('../config.php');
+
+  $data = new ConfigProveedores;
+
+  $all = $data -> obtainAll();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -45,21 +53,22 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
         </a>
-        <a href="facturas.php" style="display: flex;gap:1px;">
+        <a href="../facturas/facturas.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
         </a>
-        <a href="../proveedores/proveedores.php" style="display: flex;gap:1px;">
+        <a href="proveedores.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
         </a>
+
 
       </div>
     </div>
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Facturas</h2>
+        <h2>Proveedores</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -67,16 +76,32 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">EMPLEADO</th>
-              <th scope="col">CLIENTE</th>
-              <th scope="col">FECHA</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">CELULAR</th>
+              <th scope="col">CIUDAD</th>
               <th scope="col">DETALLE</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
+            <?php
+              foreach($all as $key => $val){
 
+            ?>
+            <tr>
+              <td><?php echo $val['id'] ?></td>
+              <td><?php echo $val['proveedorNombre'] ?></td>
+              <td><?php echo $val['celular'] ?></td>
+              <td><?php echo $val['ciudad'] ?></td>
+              <td>
+                <a class="btn btn-danger" href="borrarProveedor.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <a class="btn btn-warning" href="actualizarProveedor.php?id=<?= $val['id']?>">Editar</a>
+              </td>
+            </tr>
+            <?php
+            }
+            ?>
           </tbody>
                 
         </table>
@@ -101,28 +126,40 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Factura</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Proveedor</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarFactura.php" method="post">
+            <form class="col d-flex flex-wrap" action="registrarProveedor.php" method="post">
               <div class="mb-1 col-12">
-                <label for="cliente" class="form-label">Nombre Cliente: </label>
-                <select name="cliente" id="cliente" class="form-control">
-                  <option value="">Seleccione cliente</option>
-                </select>
+                <label for="nombreProveedor" class="form-label">Nombre Proveedor: </label>
+                <input 
+                  type="text"
+                  id="nombreProveedor"
+                  name="nombreProveedor"
+                  class="form-control"  
+                />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="empleado" class="form-label">Nombre Empleado: </label>
-                <select name="empleado" id="empleado" class="form-control">
-                  <option value="empleado">Seleccione empleado</option>
-                </select>
+                <label for="celular" class="form-label">Celular: </label>
+                <input 
+                  type="number"
+                  id="celular"
+                  name="celular"
+                  class="form-control"  
+                />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="fecha" class="form-label">Fecha: </label>
-                <input type="date" name="fecha" class="form-control">
+                <label for="ciudad" class="form-label">Ciudad: </label>
+                <input 
+                  type="text"
+                  id="ciudad"
+                  name="ciudad"
+                  class="form-control"  
+                 
+                />
               </div>
 
               <div class=" col-12 m-2">

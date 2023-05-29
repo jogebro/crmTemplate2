@@ -1,6 +1,6 @@
 <?php
     require_once("../config.php"); 
-    $data = new ConfigCategorias();
+    $data = new ConfigProveedores();
 
     $id = $_GET['id'];
     $data -> setId($id);
@@ -10,17 +10,12 @@
     $val = $record[0];
 
     if (isset($_POST['editar'])){
-        $data -> setNombreCategoria($_POST['categoriaNombre']);
-        $data -> setDescripcion($_POST['descripcion']);
-        if (!empty($_FILES['imagen']['name'])) {
-            $data -> setImagen($_FILES['imagen']['name']);
-            move_uploaded_file($_FILES['imagen']['tmp_name'], 'imagenCategoria/'.$_FILES['imagen']['name']);
-        } else {
-            $data -> setImagen($val['imagen']);
-        }
+        $data -> setNombreProveedor($_POST['proveedorNombre']);
+        $data -> setCelular($_POST['celular']);
+        $data -> setCiudad($_POST['ciudad']);
 
         $data -> update();
-        echo "<script>alert('Datos actualizados correctamente');document.location='categorias.php'</script>";
+        echo "<script>alert('Datos actualizados correctamente');document.location='proveedores.php'</script>";
     }
 
 ?>
@@ -58,38 +53,39 @@
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Categoria a Editar</h2>
+        <h2 class="m-2">Proveedor a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action="" enctype="multipart/form-data"  method="post">
               <div class="mb-1 col-12">
-                <label for="categoriaNombre" class="form-label">Nombre Categoria</label>
+                <label for="proveedorNombre" class="form-label">Nombre Proveedor</label>
                 <input 
                   type="text"
-                  id="categoriaNombre"
-                  name="categoriaNombre"
+                  id="proveedorNombre"
+                  name="proveedorNombre"
                   class="form-control"  
-                  value = "<?php echo $val['categoriaNombre'] ?>"
+                  value = "<?php echo $val['proveedorNombre'] ?>"
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="descripcion" class="form-label">Descripcion</label>
+                <label for="celular" class="form-label">Celular</label>
                 <input 
-                  type="text"
-                  id="descripcion"
-                  name="descripcion"
+                  type="number"
+                  id="celular"
+                  name="celular"
                   class="form-control"  
-                  value = "<?php echo $val['descripcion'] ?>"
+                  value = "<?php echo $val['celular'] ?>"
                  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="imagen" class="form-label">Imagen</label>
+                <label for="ciudad" class="form-label">Ciudad</label>
                 <input 
-                  type="file"
-                  id="imagen"
-                  name="imagen"
+                  type="text"
+                  id="ciudad"
+                  name="ciudad"
+                  value = "<?php echo $val['ciudad'] ?>"
                   class="form-control"  
                 />
               </div>

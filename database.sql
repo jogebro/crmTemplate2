@@ -30,3 +30,10 @@ CREATE TABLE facturas(
     Foreign Key (id_empleado) REFERENCES empleados(id),
     Foreign Key (id_cliente) REFERENCES clientes(id)
 );
+
+CREATE TABLE proveedores(
+    id INT primary key AUTO_INCREMENT,
+    proveedorNombre VARCHAR (50) NOT NULL,
+    celular VARCHAR (50),
+    ciudad VARCHAR (50)
+);
