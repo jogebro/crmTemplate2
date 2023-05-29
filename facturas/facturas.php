@@ -84,8 +84,8 @@ error_reporting(E_ALL);
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">EMPLEADO</th>
               <th scope="col">CLIENTE</th>
+              <th scope="col">EMPLEADO</th>
               <th scope="col">FECHA</th>
               <th scope="col">DETALLE</th>
             </tr>
