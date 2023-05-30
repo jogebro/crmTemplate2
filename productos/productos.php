@@ -102,7 +102,7 @@
             <tr>
               <td><?php echo $val['id']?></td>
               <td><?php echo $val['categoriaNombre']?></td>
-              <td><?php echo $val['precioUnitario']?></td>
+              <td>$<?php echo $val['precioUnitario']?></td>
               <td><?php echo $val['stock']?></td>
               <td><?php echo $val['unidadesPedidas']?></td>
               <td><?php echo $val['proveedorNombre']?></td>
