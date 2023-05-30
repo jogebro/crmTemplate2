@@ -61,3 +61,13 @@ CREATE TABLE productos(
 );
 
 DESCRIBE productos;
+
+
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpleado INT NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    username VARCHAR(80) NOT NULL,
+    password VARCHAR(60) NOT NULL,
+    FOREIGN KEY (idEmpleado) REFERENCES empleados(id)
+);
