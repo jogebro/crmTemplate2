@@ -45,3 +45,19 @@ CREATE TABLE proveedores(
     celular VARCHAR (50),
     ciudad VARCHAR (50)
 );
+
+CREATE TABLE productos(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_categoria INT,
+    precioUnitario FLOAT,
+    stock INT,
+    unidadesPedidas INT,
+    id_proveedor INT,
+    productoNombre VARCHAR(50),
+    descontinuado VARCHAR(10),
+
+    FOREIGN KEY (id_categoria) REFERENCES categorias (id),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores (id)
+);
+
+DESCRIBE productos;

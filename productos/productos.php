@@ -1,18 +1,14 @@
 <?php
-
-ini_set("display_errors", 1);
-
-ini_set("display_startup_errors", 1);
-
-error_reporting(E_ALL);
-
   require_once('../config.php');
 
-  $data = new ConfigCategorias();
+  $data = new Productos();
 
-  $all = $data -> obtainAll();
+  $all = $data->obtainAll();
+  $categoria = $data->obtainCategoria();
+  $proveedor = $data->obtainProveedor();
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -49,7 +45,7 @@ error_reporting(E_ALL);
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;">Home</h3>
         </a>
-        <a href="categorias.php" style="display: flex;gap:1px;">
+        <a href="../categorias/categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Categorias</h3>
         </a>
@@ -79,7 +75,7 @@ error_reporting(E_ALL);
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Categorias</h2>
+        <h2>Productos</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -87,31 +83,36 @@ error_reporting(E_ALL);
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">NOMBRE</th>
-              <th scope="col">DESCRIPCION</th>
-              <th scope="col">IMAGEN</th>
-              <th scope="col">DETALLE</th>
+              <th scope="col">CATEGORIA</th>
+              <th scope="col">PRECIO</th>
+              <th scope="col">STOCK</th>
+              <th scope="col">UNI PEDIDAS</th>
+              <th scope="col">PROVEEDOR</th>
+              <th scope="col">PRODUCTO</th>
+              <th scope="col">DESCONTINUADO</th>
+              <th scope="col">DETALLES</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
-
             <?php
-              foreach ($all as $key => $val){
+              foreach($all as $key => $val){
             ?>
             <tr>
-              <td><?php echo $val['id'] ?></td>
-              <td><?php echo $val['categoriaNombre'] ?></td>
-              <td><?php echo $val['descripcion'] ?></td>
-              <td><img class="imagenProd" src="../images/imagenCategoria/<?php echo $val['imagen'] ?>" alt="NADA"></td>
+              <td><?php echo $val['id']?></td>
+              <td><?php echo $val['categoriaNombre']?></td>
+              <td><?php echo $val['precioUnitario']?></td>
+              <td><?php echo $val['stock']?></td>
+              <td><?php echo $val['unidadesPedidas']?></td>
+              <td><?php echo $val['proveedorNombre']?></td>
+              <td><?php echo $val['productoNombre']?></td>
+              <td><?php echo $val['descontinuado']?></td>
               <td>
-                <a class="btn btn-danger" href="borrarCategoria.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
-                <a class="btn btn-warning" href="actualizarCategoria.php?id=<?= $val['id']?>">Editar</a>
+                <a class="btn btn-danger" href="borrarProducto.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <!-- <a class="btn btn-warning" href="actualizarCliente.php?id=<?= $val['id']?>">Editar</a> -->
               </td>
-              
             </tr>
-
             <?php
               }
             ?>
@@ -139,40 +140,90 @@ error_reporting(E_ALL);
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Categoria</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Producto</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarCategoria.php" method="post">
+            <form class="col d-flex flex-wrap" action="registrarProducto.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombreCategorias" class="form-label">Nombre Categoria: </label>
+                <label for="id_categoria" class="form-label">Categoria: </label>
+                <select name="id_categoria" id="id_categoria" class="form-control" >
+                  <option value="">Seleccione Categoria</option>
+                  <?php
+                    foreach($categoria as $key => $valCag){
+                  ?>
+                  <option value="<?php echo $valCag['id']?>"><?php echo $valCag['categoriaNombre']?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
+              </div>
+
+              <div class="mb-1 col-5">
+                <label for="precioUnitario" class="form-label">Precio Unitario: </label>
                 <input 
-                  type="text"
-                  id="nombreCategorias"
-                  name="nombreCategorias"
+                  type="number"
+                  id="precioUnitario"
+                  name="precioUnitario"
                   class="form-control"  
                 />
               </div>
 
-              <div class="mb-1 col-12">
-                <label for="descripcion" class="form-label">Descripcion: </label>
+              <div class="mb-1 col-3">
+                <label style="margin-left:1.5rem;" for="stock" class="form-label">Stock:</label>
                 <input 
-                  type="text"
-                  id="descripcion"
-                  name="descripcion"
-                  class="form-control"  
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="imagen" class="form-label">Imagen</label>
-                <input 
-                  type="file"
-                  id="imagen"
-                  name="imagen"
+                  style="margin-left:1.5rem;"
+                  type="number"
+                  id="stock"
+                  name="stock"
                   class="form-control"  
                  
                 />
+              </div>
+
+              <div class="mb-1 col-3">
+                <label style="margin-left:2.5rem;" for="unidadesPedidas" class="form-label">Unidades:</label>
+                <input 
+                  style="margin-left:2.5rem;"
+                  type="number"
+                  id="unidadesPedidas"
+                  name="unidadesPedidas"
+                  class="form-control"  
+                 
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="id_proveedor" class="form-label">Proveedor: </label>
+                <select name="id_proveedor" id="id_proveedor" class="form-control" >
+                  <option value="">Seleccione Proveedor</option>
+                  <?php
+                    foreach($proveedor as $key => $valPrv){
+                  ?>
+                  <option value="<?php echo $valPrv['id']?>"><?php echo $valPrv['proveedorNombre']?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
+              </div>
+
+              <div class="mb-1 col-5">
+                <label for="productoNombre" class="form-label">Producto: </label>
+                <input 
+                  type="text"
+                  id="productoNombre"
+                  name="productoNombre"
+                  class="form-control"  
+                />
+              </div>
+
+              <div class="mb-1 col-5">
+                <label style="margin-left:4.8rem;" for="descontinuado" class="form-label">Descontinuado: </label>
+                <select style="margin-left:4.8rem;" name="descontinuado" id="descontinuado" class="form-control" >
+                  <option value="">seleccione</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
               </div>
 
               <div class=" col-12 m-2">

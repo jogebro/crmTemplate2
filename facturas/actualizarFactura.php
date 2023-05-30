@@ -17,7 +17,7 @@
         $data -> setIdEmpleado($_POST['id_empleado']);
         $data -> setFecha($_POST['fecha']);
 
-        $data -> update();
+        /* $data -> update(); */
         echo "<script>alert('Datos actualizados correctamente');document.location='facturas.php'</script>";
     }
 
