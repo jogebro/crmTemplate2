@@ -5,23 +5,22 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
     
 error_reporting(E_ALL);
+    
+    require_once("conexion/conexion.php");
 
-    require_once("db.php");
-
-    class ConfigCategorias{
+    class ConfigCategorias extends Conexion{
         private $id;
         private $nombreCategoria;
         private $descripcion;
         private $imagen;
-        protected $dbCnx;
 
-        public function __construct($id = 0, $nombreCategoria = '', $descripcion = '', $imagen = ''){
+        public function __construct($id = 0, $nombreCategoria = '', $descripcion = '', $imagen = '', $dbCnx = ''){
             $this->id = $id;
             $this->nombreCategoria = $nombreCategoria;
             $this->descripcion = $descripcion;
             $this->imagen = $imagen;
-
-            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+            
+            parent::__construct($dbCnx);
         }
 
         public function setId($id) {
@@ -106,20 +105,19 @@ error_reporting(E_ALL);
         }
     }
 
-    class ConfigClientes{
+    class ConfigClientes extends Conexion{
         private $id;
         private $nombreCliente;
         private $celular;
         private $compañia;
-        protected $dbCnx;
 
-        public function __construct($id = 0, $nombreCliente = '', $celular = 0, $compañia = ''){
+        public function __construct($id = 0, $nombreCliente = '', $celular = 0, $compañia = '', $dbCnx = ''){
             $this->id = $id;
             $this->nombreCliente = $nombreCliente;
             $this->celular = $celular;
             $this->compañia = $compañia;
 
-            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+            parent::__construct($dbCnx);
         }
 
         public function setId($id) {
@@ -204,22 +202,21 @@ error_reporting(E_ALL);
         }
     }
 
-    class ConfigEmpleados{
+    class ConfigEmpleados extends Conexion{
         private $id;
         private $nombreEmpleado;
         private $celular;
         private $direccion;
         private $imagen;
-        protected $dbCnx;
 
-        public function __construct($id = 0, $nombreEmpleado = '', $celular = 0, $direccion = '', $imagen = ''){
+        public function __construct($id = 0, $nombreEmpleado = '', $celular = 0, $direccion = '', $imagen = '', $dbCnx = ''){
             $this->id = $id;
             $this->nombreEmpleado = $nombreEmpleado;
             $this->celular = $celular;
             $this->direccion = $direccion;
             $this->imagen = $imagen;
 
-            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+            parent::__construct($dbCnx);
         }
 
         public function setId($id) {
@@ -312,20 +309,19 @@ error_reporting(E_ALL);
         }
     }
 
-    class ConfigFacturas{
+    class ConfigFacturas extends Conexion{
         private $id;
         private $id_cliente;
         private $id_empleado;
         private $fecha;
-        protected $dbCnx;
 
-        public function __construct($id = 0, $id_cliente = '', $id_empleado = '', $fecha = ''){
+        public function __construct($id = 0, $id_cliente = '', $id_empleado = '', $fecha = '', $dbCnx = ''){
             $this->id = $id;
             $this->id_cliente = $id_cliente;
             $this->id_empleado = $id_empleado;
             $this->fecha = $fecha;
 
-            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+            parent::__construct($dbCnx);
         }
 
         public function setId($id) {
@@ -420,31 +416,21 @@ error_reporting(E_ALL);
                 return $e -> getMessage();
             }
         }
-
-        public function update(){
-            try {
-                $stm = $this -> dbCnx -> prepare("UPDATE facturas SET clienteNombre = ?, empleadoNombre = ?, fecha = ? WHERE id = ?");
-                $stm -> execute([$this->clienteNombre, $this->empleadoNombre, $this->fecha, $this->id]);
-            } catch (Exception $e) {
-                return $e -> getMessage();
-            }
-        }
     }
 
-    class ConfigProveedores{
+    class ConfigProveedores extends Conexion{
         private $id;
         private $nombreProveedor;
         private $celular;
         private $ciudad;
-        protected $dbCnx;
 
-        public function __construct($id = 0, $nombreProveedor = '', $celular = 0, $ciudad = ''){
+        public function __construct($id = 0, $nombreProveedor = '', $celular = 0, $ciudad = '', $dbCnx = ''){
             $this->id = $id;
             $this->nombreProveedor = $nombreProveedor;
             $this->celular = $celular;
             $this->ciudad = $ciudad;
 
-            $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+            parent::__construct($dbCnx);
         }
 
         public function setId($id) {

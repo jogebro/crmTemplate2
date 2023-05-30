@@ -1,6 +1,10 @@
+-- Active: 1685446599434@@127.0.0.1@3306@superMarket
 CREATE DATABASE superMarket;
 
+SHOW DATABASES;
 USE superMarket;
+
+SHOW TABLES;
 
 CREATE TABLE categorias(
     id INT primary key AUTO_INCREMENT,
