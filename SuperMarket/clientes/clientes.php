@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 require_once('../config.php');
 
-$data = new ConfigClientes();
+$data = new Clientes();
 
 $all = $data -> obtainAll();
 ?>

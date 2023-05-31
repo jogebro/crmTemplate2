@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
   require_once('../config.php');
 
-  $data = new ConfigFacturas();
+  $data = new Facturas();
 
   $all = $data -> obtainAll();
   $empleado = $data-> obtainEmpleado();

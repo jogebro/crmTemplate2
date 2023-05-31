@@ -1,6 +1,6 @@
 <?php
     require_once("../config.php"); 
-    $data = new ConfigFacturas();
+    $data = new Facturas();
 
     $id = $_GET['id'];
     $data -> setId($id);

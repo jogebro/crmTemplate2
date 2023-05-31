@@ -1,6 +1,6 @@
 <?php
     require_once("../config.php"); 
-    $data = new ConfigProveedores();
+    $data = new Proveedores();
 
     $id = $_GET['id'];
     $data -> setId($id);

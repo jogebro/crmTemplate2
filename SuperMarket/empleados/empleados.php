@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 require_once('../config.php');
 
-$data = new ConfigEmpleados();
+$data = new Empleados();
 
 $all = $data -> obtainAll();
 

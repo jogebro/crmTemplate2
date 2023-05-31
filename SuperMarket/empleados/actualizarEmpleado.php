@@ -1,6 +1,6 @@
 <?php
     require_once("../config.php"); 
-    $data = new ConfigEmpleados();
+    $data = new Empleados();
 
     $id = $_GET['id'];
     $data -> setId($id);

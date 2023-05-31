@@ -8,7 +8,7 @@ error_reporting(E_ALL);
     if (isset($_POST['guardar'])){
         require_once('../config.php');
 
-        $config = new ConfigClientes();
+        $config = new Clientes();
 
         $config -> setNombreCliente($_POST['nombreCliente']);
         $config -> setCelular($_POST['celular']);

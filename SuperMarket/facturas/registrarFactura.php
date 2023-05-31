@@ -8,7 +8,7 @@ error_reporting(E_ALL);
     if (isset($_POST['guardar'])){
         require_once('../config.php');
 
-        $config = new ConfigFacturas();
+        $config = new Facturas();
 
         $config -> setIdCliente($_POST['id_cliente']);
         $config -> setIdEmpleado($_POST['id_empleado']);

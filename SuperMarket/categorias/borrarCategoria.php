@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
     require_once("../config.php");
 
-    $record = new ConfigCategorias();
+    $record = new Categorias();
     if(isset($_GET['id']) && isset($_GET['req'])){
         if ($_GET['req'] == "delete"){
             $record -> setId($_GET['id']);

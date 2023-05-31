@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
     require_once("../config.php");
 
-    $record = new ConfigClientes();
+    $record = new Clientes();
     if(isset($_GET['id']) && isset($_GET['req'])){
         if ($_GET['req'] == "delete"){
             $record -> setId($_GET['id']);
