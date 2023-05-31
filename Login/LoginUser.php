@@ -2,7 +2,7 @@
     require_once('../SuperMarket/conexion/db.php');
     require_once('../SuperMarket/conexion/conexion.php');
 
-    class RegistroUser extends Conexion{
+    class LoginUser extends Conexion{
         private $id;
         private $idEmpleado;
         private $email;
