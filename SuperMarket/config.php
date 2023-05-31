@@ -367,8 +367,7 @@ error_reporting(E_ALL);
 
         public function obtainAll(){
             try {
-                $stm = $this -> dbCnx -> prepare("SELECT * from facturas inner join clientes on facturas.id_cliente = clientes.id inner join empleados on facturas.id_empleado = empleados.id
-                ");
+                $stm = $this -> dbCnx -> prepare("SELECT facturas.id, clientes.clienteNombre, empleados.empleadoNombre, facturas.fecha from facturas inner join clientes on facturas.id_cliente = clientes.id inner join empleados on facturas.id_empleado = empleados.id");
                 $stm -> execute();
                 return $stm -> fetchAll();
             } catch (Exception $e) {
@@ -613,7 +612,7 @@ error_reporting(E_ALL);
 
         public function obtainAll(){
             try {
-                $stm = $this -> dbCnx -> prepare("SELECT * FROM productos INNER JOIN categorias ON productos.id_categoria = categorias.id INNER JOIN proveedores ON productos.id_proveedor = proveedores.id");
+                $stm = $this -> dbCnx -> prepare("SELECT productos.id, categorias.categoriaNombre, productos.precioUnitario, productos.stock, productos.unidadesPedidas, proveedores.proveedorNombre, productos.productoNombre, productos.descontinuado FROM productos INNER JOIN categorias ON productos.id_categoria = categorias.id INNER JOIN proveedores ON productos.id_proveedor = proveedores.id");
                 $stm -> execute();
                 return $stm -> fetchAll();
             } catch (Exception $e) {
