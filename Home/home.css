@@ -76,36 +76,44 @@ body{
     text-decoration: none;
     font-weight: lighter;
     color: black;
+    padding: 0.5rem;
+    transition: all 200ms ease-in-out;
+    border-radius: 10px;
   }
 
 
   .menus{
     padding-left: 2rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
    
-    gap: 40px;
+    gap: 30px;
   }
 
   .menus h3{
     font-weight: lighter;
-    font-size:large
+    font-size:large;
    
   }
   
    .menus a:hover{
     background-color:rgb(74, 74, 97);
-    padding: 5px;
     color: #fff9f9;
-    margin: 5px;
-    font-weight: 800;
- 
-   
+    transform: scale(1);
   }
 
+  #salir{
+    color: rgb(160, 27, 0);
+  }
+
+  #salir:hover{
+    background-color:rgb(160, 27, 0);
+    color: #ffffff;
+    transform: scale(1);
+  }
 
   i{
     margin-right: 1rem;

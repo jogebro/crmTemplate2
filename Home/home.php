@@ -1,3 +1,10 @@
+<?php
+  require_once('../Login/LoginUser.php');
+
+  session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,21 +32,41 @@
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camp Skiller.</h3>
-        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
-        <h3 >Maicol Estrada</h3>
+        <img src="../SuperMarket/images/logoSuperMarket.png" alt="" class="imagenPerfil">
+        <h3 ><?php echo $_SESSION['username']?></h3>
       </div>
       <div class="menus">
-        <a href="home.php" style="display: flex;gap:2px;">
+        <a href="" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;font-weight: 800;">Home</h3>
         </a>
-        <a href="../Estudiantes/estudiantes.php" style="display: flex;gap:2px;">
+        <a href="../SuperMarket/categorias/categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Categorias</h3>
+        </a>
+        <a href="../SuperMarket/clientes/clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+        </a>
+        <a href="../SuperMarket/empleados/empleados.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+        </a>
+        <a href="../SuperMarket/facturas/facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Facturas</h3>
+        </a>
+        <a href="../SuperMarket/proveedores/proveedores.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Proveedores</h3>
+        </a>
+        <a href="../SuperMarket/productos/productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
         </a>
       
         </a>
-        <a href="/login/login.php" style="display: flex;gap:2px;color: brown;">
+        <a href="../Login/loginRegister.php" id="salir" style="display: flex;gap:1px;">
           <i class="bi bi-x-square"></i>
           <h3 style="margin: 0px;">salir</h3>
         </a>

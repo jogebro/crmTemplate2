@@ -82,13 +82,13 @@ body{
 
   .menus{
     padding-left: 2rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
    
-    gap: 40px;
+    gap: 30px;
   }
 
   .menus h3{
@@ -103,6 +103,15 @@ body{
     transform: scale(1);
   }
 
+  #salir{
+    color: rgb(160, 27, 0);
+  }
+
+  #salir:hover{
+    background-color:rgb(160, 27, 0);
+    color: #ffffff;
+    transform: scale(1);
+  }
 
   i{
     margin-right: 1rem;
@@ -243,7 +252,7 @@ body{
 .imagenProd{
     width: 120px;
     height: 120px;
-    border-radius: 100px;
+    border-radius: 100px; 
     object-fit: cover;
 }
 

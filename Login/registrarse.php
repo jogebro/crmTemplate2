@@ -9,9 +9,16 @@
         $registrar -> setUsername($_POST['username']);
         $registrar -> setPassword($_POST['password']);
 
-        $registrar -> insertData();
+        /* $registrar -> insertData();
 
-        echo "<script>alert('Usuario registrado satisfactoriamente');document.location='loginRegister.php'</script>";
+        echo "<script>alert('Usuario registrado satisfactoriamente');document.location='loginRegister.php'</script>"; */
+
+        if ($registrar->checkUser($_POST['email'])) {
+            echo "<script>alert('Usuario ya existente, logueate ');document.location='loginRegister.php'</script>";
+        }else{
+            $registrar -> insertData();
+            echo "<script>alert('Usuario registrado satisfactoriamente');document.location='../Home/home.php'</script>"; 
+        }
     }
 
 ?>
