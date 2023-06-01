@@ -1,6 +1,6 @@
 <?php
-    require_once('../SuperMarket/conexion/db.php');
-    require_once('../SuperMarket/conexion/conexion.php');
+    require_once('../Conexion/db.php');
+    require_once('../Conexion/conexion.php');
 
     class LoginUser extends Conexion{
 
