@@ -1,4 +1,4 @@
--- Active: 1685375354290@@127.0.0.1@3306@Supermarket
+-- Active: 1685446599434@@127.0.0.1@3306@superMarket
 CREATE DATABASE superMarket;
 
 SHOW DATABASES;
@@ -61,8 +61,17 @@ CREATE TABLE productos(
 );
 
 DESCRIBE productos;
+CREATE TABLE detalleFacturas(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_factura INT,
+    id_producto INT,
+    cantidad INT,
+    precioVenta INT,
 
-
+    FOREIGN KEY (id_factura) REFERENCES facturas (id),
+    FOREIGN KEY (id_producto) REFERENCES productos (id)    
+);
+DROP TABLE detalleFacturas;
 CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
     idEmpleado INT NOT NULL,

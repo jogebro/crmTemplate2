@@ -4,7 +4,7 @@
 
         $registrar = new RegistroUser;
 
-        $registrar -> setIdEmpleado(2);
+        $registrar -> setIdEmpleado(1);
         $registrar -> setEmail($_POST['email']);
         $registrar -> setUsername($_POST['username']);
         $registrar -> setPassword($_POST['password']);

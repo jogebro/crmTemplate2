@@ -76,6 +76,10 @@ error_reporting(E_ALL);
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
         </a>
+        <a href="../detalleFacturas/detalleFactura.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Detalle Factura</h3>
+        </a>
         <a href="../../Login/loginRegister.php" id="salir" style="display: flex;gap:2px;color: brown;">
           <i class="bi bi-x-square"></i>
           <h3 style="margin: 0px;">salir</h3>

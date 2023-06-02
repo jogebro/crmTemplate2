@@ -21,7 +21,7 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 
-  <link rel="stylesheet" type="text/css" href="home.css">
+  <link rel="stylesheet" type="text/css" href="../SuperMarket/css/supermarket.css">
 
 </head>
 
@@ -64,7 +64,10 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
         </a>
-      
+        <a href="../SuperMarket/detalleFacturas/detalleFactura.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="margin: 0px;font-weight: 800;">Detalle Factura</h3>
+        </a>
         </a>
         <a href="../Login/loginRegister.php" id="salir" style="display: flex;gap:1px;">
           <i class="bi bi-x-square"></i>
@@ -76,9 +79,13 @@
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Promedio</h2>
+        <h2 class="m-2">Home</h2>
       <div class="menuTabla contenedor2">
-        <div id="charts1" class="charts"> </div>
+        <div style="font-size: 4rem;" id="charts1" class="charts">WELCOME</div>
+        <h3>Seleccione una opcion del menu</h3> 
+        <div class="imgMano">
+          <img src="images/mano.png" alt="...">
+        </div>
       </div>
     </div>
 
@@ -108,11 +115,11 @@
     crossorigin="anonymous"></script>
 
   <!-- APACHE Echars -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+<!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
 
 
   <script src="home.js"></script>
-
+ -->
 </body>
 
 </html>

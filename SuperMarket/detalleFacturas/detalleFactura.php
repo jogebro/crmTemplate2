@@ -1,17 +1,22 @@
 <?php
+
+ini_set("display_errors", 1);
+
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL);
+
   require_once('../config.php');
 
   session_start();
 
-  $data = new Productos();
+  $data = new DetallesFactura();
 
-  $all = $data->obtainAll();
-  $categoria = $data->obtainCategoria();
-  $proveedor = $data->obtainProveedor();
+  $all = $data -> obtainAll();
+  $factura = $data->obtainFacturas();
+  $producto = $data->obtainProductos();
 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +45,7 @@
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">SuperMarket</h3>
         <img src="../images/logoSuperMarket.png" alt="" class="imagenPerfil">
-        <h3><?php echo $_SESSION['username'] ?></h3>
+        <h3><?php echo $_SESSION['username']?></h3>
       </div>
       <div class="menus">
         <a href="../../Home/home.php" style="display: flex;gap:2px;">
@@ -71,58 +76,53 @@
           <i class="bi bi-people"></i>
           <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
         </a>
-        <a href="../detalleFacturas/detalleFactura.php" style="display: flex;gap:1px;">
+        <a href="detalleFactura.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Detalle Factura</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Detalle Facturas</h3>
         </a>
-        <a href="../../Login/loginRegister.php" id="salir" style="display: flex;gap:2px;color: brown;">
+        <a href="../../Login/loginRegister.php" id="salir" style="display: flex;gap:1px;">
           <i class="bi bi-x-square"></i>
           <h3 style="margin: 0px;">salir</h3>
         </a>
+        
 
       </div>
     </div>
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Productos</h2>
+        <h2>Categorias</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
         <table class="table table-custom ">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">CATEGORIA</th>
-              <th scope="col">PRECIO</th>
-              <th scope="col">STOCK</th>
-              <th scope="col">UNI PEDIDAS</th>
-              <th scope="col">PROVEEDOR</th>
-              <th scope="col">PRODUCTO</th>
-              <th scope="col">DESCONTINUADO</th>
-              <th scope="col">DETALLES</th>
+              <th scope="col">FACTURA ID</th>
+              <th scope="col">PRODUCTO ID</th>
+              <th scope="col">CANTIDAD</th>
+              <th scope="col">PRECIO VENTA</th>
+              <th scope="col">DETALLE</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
 
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
-              foreach($all as $key => $val){
+              foreach ($all as $key => $val){
             ?>
             <tr>
-              <td><?php echo $val['id']?></td>
-              <td><?php echo $val['categoriaNombre']?></td>
-              <td>$<?php echo $val['precioUnitario']?></td>
-              <td><?php echo $val['stock']?></td>
-              <td><?php echo $val['unidadesPedidas']?></td>
-              <td><?php echo $val['proveedorNombre']?></td>
-              <td><?php echo $val['productoNombre']?></td>
-              <td><?php echo $val['descontinuado']?></td>
+              <td><?php echo $val['id_factura'] ?></td>
+              <td><?php echo $val['id_producto'] ?></td>
+              <td><?php echo $val['cantidad'] ?></td>
+              <td><?php echo $val['precioVenta'] ?></td>
               <td>
-                <a class="btn btn-danger" href="borrarProducto.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
-                <!-- <a class="btn btn-warning" href="actualizarCliente.php?id=<?= $val['id']?>">Editar</a> -->
+                <a class="btn btn-danger" href="borrarCategoria.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
+                <!-- <a class="btn btn-warning" href="actualizarCategoria.php?id=<?= $val['id']?>">Editar</a> -->
               </td>
+              
             </tr>
+
             <?php
               }
             ?>
@@ -150,90 +150,60 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Producto</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Detalle Factura</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarProducto.php" method="post">
+            <form class="col d-flex flex-wrap" action="registrarDetalle.php" method="post">
               <div class="mb-1 col-12">
-                <label for="id_categoria" class="form-label">Categoria: </label>
-                <select name="id_categoria" id="id_categoria" class="form-control" >
-                  <option value="">Seleccione Categoria</option>
+                <label for="idFactura" class="form-label">ID Factura: </label>
+                <select name="idFactura" id="idFactura" class="form-control">
+                  <option value="">Seleccione id factura</option>
                   <?php
-                    foreach($categoria as $key => $valCag){
+                    foreach($factura as $key => $valfat){
                   ?>
-                  <option value="<?php echo $valCag['id']?>"><?php echo $valCag['categoriaNombre']?></option>
+                  <option value="<?php echo $valfat['id']?>"><?php echo $valfat['id']?></option>
                   <?php
                     }
                   ?>
                 </select>
               </div>
 
-              <div class="mb-1 col-5">
-                <label for="precioUnitario" class="form-label">Precio Unitario: </label>
-                <input 
-                  type="number"
-                  id="precioUnitario"
-                  name="precioUnitario"
-                  class="form-control"  
-                />
-              </div>
-
-              <div class="mb-1 col-3">
-                <label style="margin-left:1.5rem;" for="stock" class="form-label">Stock:</label>
-                <input 
-                  style="margin-left:1.5rem;"
-                  type="number"
-                  id="stock"
-                  name="stock"
-                  class="form-control"  
-                 
-                />
-              </div>
-
-              <div class="mb-1 col-3">
-                <label style="margin-left:2.5rem;" for="unidadesPedidas" class="form-label">Unidades:</label>
-                <input 
-                  style="margin-left:2.5rem;"
-                  type="number"
-                  id="unidadesPedidas"
-                  name="unidadesPedidas"
-                  class="form-control"  
-                 
-                />
-              </div>
-
               <div class="mb-1 col-12">
-                <label for="id_proveedor" class="form-label">Proveedor: </label>
-                <select name="id_proveedor" id="id_proveedor" class="form-control" >
-                  <option value="">Seleccione Proveedor</option>
+                <label for="idProducto" class="form-label">Producto: </label>
+                <select name="idProducto" id="idProducto" class="form-control">
+                  <option value="">Seleccione Producto</option>
                   <?php
-                    foreach($proveedor as $key => $valPrv){
+                    foreach($producto as $key => $valpro){
                   ?>
-                  <option value="<?php echo $valPrv['id']?>"><?php echo $valPrv['proveedorNombre']?></option>
+                  <option value="<?php echo $valpro['id']?>"><?php echo $valpro['productoNombre']?></option>
                   <?php
                     }
                   ?>
+
                 </select>
               </div>
 
               <div class="mb-1 col-5">
-                <label for="productoNombre" class="form-label">Producto: </label>
+                <label for="cantidad" class="form-label">Cantidad</label>
                 <input 
-                  type="text"
-                  id="productoNombre"
-                  name="productoNombre"
+                  type="number"
+                  id="cantidad"
+                  name="cantidad"
                   class="form-control"  
+                 
                 />
               </div>
-
               <div class="mb-1 col-5">
-                <label style="margin-left:4.8rem;" for="descontinuado" class="form-label">Descontinuado: </label>
-                <select style="margin-left:4.8rem;" name="descontinuado" id="descontinuado" class="form-control" >
-                  <option value="">seleccione</option>
-                  <option value="Si">Si</option>
-                  <option value="No">No</option>
-                </select>
+                <label style="margin-left:4.8rem;" for="precioVenta" class="form-label">Precio Venta</label>
+                <input 
+                  style="margin-left:4.8rem;"
+                  type="number"
+                  id="precioVenta"
+                  name="precioVenta"
+                  class="form-control"  
+                 
+                />
               </div>
 
               <div class=" col-12 m-2">
@@ -245,12 +215,9 @@
       </div>
     </div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>

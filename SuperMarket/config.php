@@ -691,4 +691,141 @@ error_reporting(E_ALL);
             }
         } */
     }
+
+    class DetallesFactura extends Conexion{
+        private $id;
+        private $idFactura;
+        private $idProducto;
+        private $cantidad;
+        private $precioVenta;
+
+        public function __construct($id = 0, $idFactura = 0, $idProducto = '', $cantidad = 0, $precioVenta = 0, $dbCnx = ''){
+            $this->id = $id;
+            $this->idFactura = $idFactura;
+            $this->idProducto = $idProducto;
+            $this->cantidad = $cantidad;
+            $this->precioVenta = $precioVenta;
+            
+            parent::__construct($dbCnx);
+        }
+
+        public function setId($id) {
+            $this->id = $id;
+        }
+    
+        public function getId() {
+            return $this->id;
+        }
+    
+        public function setIdFactura($idFactura) {
+            $this->idFactura = $idFactura;
+        }
+    
+        public function getIdFactura() {
+            return $this->idFactura;
+        }
+    
+        public function setIdProducto($idProducto) {
+            $this->idProducto = $idProducto;
+        }
+    
+        public function getIdProducto() {
+            return $this->idProducto;
+        }
+    
+        public function setCantidad($cantidad) {
+            $this->cantidad = $cantidad;
+        }
+    
+        public function getCantidad() {
+            return $this->cantidad;
+        }
+
+        public function setPrecioVenta($precioVenta) {
+            $this->precioVenta = $precioVenta;
+        }
+    
+        public function getPrecioVenta() {
+            return $this->precioVenta;
+        }
+
+        public function insertData() {
+            try {
+                $stm = $this->dbCnx->prepare("INSERT INTO detalleFacturas (id_factura, id_producto, cantidad, precioVenta) VALUES (?, ?, ?, ?)");
+                $stm->execute([$this->idFactura, $this->idProducto, $this->cantidad, $this->precioVenta]);
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function obtainAll(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT * FROM detalleFacturas");
+                $stm -> execute();
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function obtainFacturas(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT id FROM facturas");
+                $stm -> execute();
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function obtainProductos(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT id, productoNombre FROM productos");
+                $stm -> execute();
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        /* public function obtainAll(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT * FROM detalleFacturas");
+                $stm -> execute();
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function delete(){
+            try {
+                $stm = $this -> dbCnx -> prepare("DELETE FROM detalleFacturas WHERE id = ?");
+                $stm -> execute([$this->id]);
+                return $stm -> fetchAll();
+                echo "<script>alert('Registro eliminado');document.location='detalleFacturas.php'</script>";
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function selectOne(){
+            try {
+                $stm = $this -> dbCnx -> prepare("SELECT * FROM detalleFacturas WHERE id = ?");
+                $stm -> execute([$this -> id]);
+                return $stm -> fetchAll();
+            } catch (Exception $e) {
+                return $e -> getMessage();
+            }
+        }
+
+        public function update(){
+            try {
+                $stm = $this -> dbCnx -> prepare("UPDATE detalleFacturas SET categoriaNombre = ?, idProducto = ?, cantidad = ? WHERE id = ?");
+                $stm -> execute([$this->idFactura, $this->idProducto, $this->cantidad, $this->id]);
+            } catch (Exception $e) {
+                return $e -> getMessage();
+            }
+        } */
+    }
 ?>
