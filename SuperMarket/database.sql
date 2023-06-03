@@ -1,4 +1,4 @@
--- Active: 1685747184633@@127.0.0.1@3306@phpmyadmin
+-- Active: 1685751278085@@127.0.0.1@3306@facturacion
 CREATE DATABASE superMarket;
 
 SHOW DATABASES;
@@ -37,8 +37,6 @@ CREATE TABLE facturas(
     Foreign Key fk_id_cliente (id_cliente) REFERENCES clientes(id)
 );
 
-DROP TABLE facturas;
-DESCRIBE facturas;
 CREATE TABLE proveedores(
     id INT primary key AUTO_INCREMENT,
     proveedorNombre VARCHAR (50) NOT NULL,
@@ -60,7 +58,6 @@ CREATE TABLE productos(
     FOREIGN KEY (id_proveedor) REFERENCES proveedores (id)
 );
 
-DESCRIBE productos;
 CREATE TABLE detalleFacturas(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_factura INT,
@@ -71,7 +68,7 @@ CREATE TABLE detalleFacturas(
     FOREIGN KEY (id_factura) REFERENCES facturas (id),
     FOREIGN KEY (id_producto) REFERENCES productos (id)    
 );
-DROP TABLE detalleFacturas;
+
 CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
     idEmpleado INT NOT NULL,

@@ -1,21 +1,20 @@
 <?php
     require_once("../config.php"); 
-    $data = new Facturas();
+    $data = new Productos();
 
     $id = $_GET['id'];
     $data -> setId($id);
 
     $record = $data -> selectOne();
-    $cliente = $data->obtainCliente();
-    $empleado = $data->obtainEmpleado();
+
 
     $val = $record[0];
 
 
     if (isset($_POST['editar'])){
-        $data -> setIdCliente($_POST['id_cliente']);
-        $data -> setIdEmpleado($_POST['id_empleado']);
-        $data -> setFecha($_POST['fecha']);
+        $data -> setIdCategoria($_POST['id_categoria']);
+        $data -> setIdProveedor($_POST['id_proveedor']);
+        $data -> setPrecioUnitario($_POST['precioUnitario']);
 
         $data -> update();
         echo "<script>alert('Datos actualizados correctamente');document.location='facturas.php'</script>";

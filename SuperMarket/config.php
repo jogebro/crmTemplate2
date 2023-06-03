@@ -415,6 +415,15 @@ error_reporting(E_ALL);
                 return $e -> getMessage();
             }
         }
+
+        public function update(){
+            try {
+                $stm = $this -> dbCnx -> prepare("UPDATE facturas SET id_cliente = ?, id_empleado = ?, fecha = ? WHERE id = ?");
+                $stm -> execute([$this->id_cliente, $this->id_empleado, $this->fecha, $this->id]);
+            } catch (Exception $e) {
+                return $e -> getMessage();
+            }
+        }
     }
 
     class Proveedores extends Conexion{
@@ -512,6 +521,8 @@ error_reporting(E_ALL);
                 return $e -> getMessage();
             }
         }
+
+        
     }
 
     class Productos extends Conexion{
@@ -651,30 +662,9 @@ error_reporting(E_ALL);
             }
         }
 
-        /* public function obtainAll(){
-            try {
-                $stm = $this -> dbCnx -> prepare("SELECT * FROM proveedores");
-                $stm -> execute();
-                return $stm -> fetchAll();
-            } catch (Exception $e) {
-                return $e->getMessage();
-            }
-        }
-
-        public function delete(){
-            try {
-                $stm = $this -> dbCnx -> prepare("DELETE FROM proveedores WHERE id = ?");
-                $stm -> execute([$this->id]);
-                return $stm -> fetchAll();
-                echo "<script>alert('Registro eliminado');document.location='proveedores.php'</script>";
-            } catch (Exception $e) {
-                return $e->getMessage();
-            }
-        }
-
         public function selectOne(){
             try {
-                $stm = $this -> dbCnx -> prepare("SELECT * FROM proveedores WHERE id = ?");
+                $stm = $this -> dbCnx -> prepare("SELECT * FROM productos WHERE id = ?");
                 $stm -> execute([$this -> id]);
                 return $stm -> fetchAll();
             } catch (Exception $e) {
@@ -684,14 +674,13 @@ error_reporting(E_ALL);
 
         public function update(){
             try {
-                $stm = $this -> dbCnx -> prepare("UPDATE proveedores SET proveedorNombre = ?, celular = ?, ciudad = ? WHERE id = ?");
-                $stm -> execute([$this->nombreProveedor, $this->celular, $this->ciudad, $this->id]);
+                $stm = $this -> dbCnx -> prepare("UPDATE productos SET id_categoria = ?, precioUnitario = ?, stock = ?, unidadesPedidas = ?, id_proveedor = ?, productoNombre = ?, descontinuado = ? WHERE id = ?");
+                $stm -> execute([$this->id_categoria, $this->precioUnitario, $this->stock, $this->unidadesPedidas, $this->id_proveedor, $this->productoNombre, $this->descontinuado, $this->id]);
             } catch (Exception $e) {
                 return $e -> getMessage();
             }
-        } */
+        }
     }
-
     class DetallesFactura extends Conexion{
         private $id;
         private $idFactura;

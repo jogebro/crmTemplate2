@@ -117,7 +117,7 @@ error_reporting(E_ALL);
               <td><?php echo $val['fecha'] ?></td>
               <td>
                 <a class="btn btn-danger" href="borrarFactura.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
-                <!-- <a class="btn btn-warning" href="actualizarFactura.php?id=<?= $val['id']?>">Editar</a> --> 
+                <a class="btn btn-warning" href="actualizarFactura.php?id=<?= $val['id']?>">Editar</a> 
               </td>
               
             </tr>
