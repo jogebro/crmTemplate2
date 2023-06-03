@@ -31,7 +31,7 @@
     <div class="parte-izquierda">
 
       <div class="perfil">
-        <h3 style="margin-bottom: 2rem;">Camp Skiller.</h3>
+        <h3 style="margin-bottom: 2rem;">SuperMarket</h3>
         <img src="../SuperMarket/images/logoSuperMarket.png" alt="" class="imagenPerfil">
         <h3 ><?php echo $_SESSION['username']?></h3>
       </div>

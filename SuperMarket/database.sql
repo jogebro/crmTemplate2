@@ -1,4 +1,4 @@
--- Active: 1685446599434@@127.0.0.1@3306@superMarket
+-- Active: 1685747184633@@127.0.0.1@3306@phpmyadmin
 CREATE DATABASE superMarket;
 
 SHOW DATABASES;
