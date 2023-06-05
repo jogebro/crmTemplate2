@@ -6,6 +6,8 @@
     $data -> setId($id);
 
     $record = $data -> selectOne();
+    $categoria = $data-> obtainCategoria();
+    $proveedor = $data-> obtainProveedor();
 
 
     $val = $record[0];
@@ -13,11 +15,16 @@
 
     if (isset($_POST['editar'])){
         $data -> setIdCategoria($_POST['id_categoria']);
-        $data -> setIdProveedor($_POST['id_proveedor']);
         $data -> setPrecioUnitario($_POST['precioUnitario']);
+        $data -> setStock($_POST['stock']);
+        $data -> setUnidadesPedidas($_POST['unidadesPedidas']);
+        $data -> setIdProveedor($_POST['id_proveedor']);
+        $data -> setProductoNombre($_POST['productoNombre']);
+        $data -> setDescontinuado($_POST['descontinuado']);
+        
 
         $data -> update();
-        echo "<script>alert('Datos actualizados correctamente');document.location='facturas.php'</script>";
+        echo "<script>alert('Datos actualizados correctamente');document.location='productos.php'</script>";
     }
 
 ?>
@@ -59,44 +66,86 @@
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action="" enctype="multipart/form-data"  method="post">
       <div class="mb-1 col-12">
-            <label for="id_cliente" class="form-label">Nombre Cliente</label>
-            <select name="id_cliente" id="id_cliente" class="form-control">
+            <label for="id_categoria" class="form-label">Nombre Cliente</label>
+            <select name="id_categoria" id="id_categoria" class="form-control">
               <option value="">Seleccione cliente</option>
               <?php 
-                foreach ($cliente as $key => $valC) {
-                  $selected = ($valC['id'] == $val['id_cliente']) ? 'selected' : '';
+                foreach ($categoria as $key => $valCt) {
+                  $selected = ($valCt['id'] == $val['id_categoria']) ? 'selected' : '';
               ?>
-                  <option value="<?php echo $valC['id'] ?>" <?php echo $selected ?>><?php echo $valC['clienteNombre'] ?></option>
+                  <option value="<?php echo $valCt['id'] ?>" <?php echo $selected ?>><?php echo $valCt['categoriaNombre'] ?></option>
               <?php 
                 }
               ?>
             </select> 
           </div>
-          <!-- ... -->
+
           <div class="mb-1 col-12">
-            <label for="id_empleado" class="form-label">Nombre Empleado</label>
-            <select name="id_empleado" id="id_empleado" class="form-control">
+                <label for="precioUnitario" class="form-label">Precio Unitario</label>
+                <input 
+                  type="number"
+                  id="precioUnitario"
+                  name="precioUnitario"
+                  class="form-control"  
+                  value="<?php echo $val['precioUnitario'] ?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="stock" class="form-label">Stock</label>
+                <input 
+                  type="number"
+                  id="stock"
+                  name="stock"
+                  class="form-control"  
+                  value="<?php echo $val['stock'] ?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="unidadesPedidas" class="form-label">Unidades Pedidas</label>
+                <input 
+                  type="number"
+                  id="unidadesPedidas"
+                  name="unidadesPedidas"
+                  class="form-control"  
+                  value="<?php echo $val['unidadesPedidas'] ?>"
+                />
+              </div>
+
+          <div class="mb-1 col-12">
+            <label for="id_proveedor" class="form-label">Nombre Proveedor</label>
+            <select name="id_proveedor" id="id_proveedor" class="form-control">
               <option value="">Seleccione empleado</option>
               <?php 
-                foreach ($empleado as $key => $valE) {
-                  $selected = ($valE['id'] == $val['id_empleado']) ? 'selected' : '';
+                foreach ($proveedor as $key => $valP) {
+                  $selected = ($valP['id'] == $val['id_proveedor']) ? 'selected' : '';
               ?>
-                  <option value="<?php echo $valE['id'] ?>" <?php echo $selected ?>><?php echo $valE['empleadoNombre'] ?></option>
+                  <option value="<?php echo $valP['id'] ?>" <?php echo $selected ?>><?php echo $valP['proveedorNombre'] ?></option>
               <?php 
                 }
               ?>
             </select>
           </div>
 
-              <div class="mb-1 col-12">
-                <label for="fecha" class="form-label">Fecha</label>
+          <div class="mb-1 col-12">
+                <label for="productoNombre" class="form-label">Producto</label>
                 <input 
-                  type="date"
-                  id="fecha"
-                  name="fecha"
+                  type="text"
+                  id="productoNombre"
+                  name="productoNombre"
                   class="form-control"  
-                  value="<?php echo $val['fecha'] ?>"
+                  value="<?php echo $val['productoNombre'] ?>"
                 />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="descontinuado" class="form-label">Descontinuado: </label>
+                <select name="descontinuado" id="descontinuado" class="form-control">
+                  <option value="">seleccione</option>
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
               </div>
 
               <div class=" col-12 m-2">

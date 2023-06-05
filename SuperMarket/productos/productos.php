@@ -120,7 +120,7 @@
               <td><?php echo $val['descontinuado']?></td>
               <td>
                 <a class="btn btn-danger" href="borrarProducto.php?id=<?= $val['id'] ?>&req=delete">BORRAR</a>
-                <!-- <a class="btn btn-warning" href="actualizarCliente.php?id=<?= $val['id']?>">Editar</a> -->
+                <a class="btn btn-warning" href="actualizarProducto.php?id=<?= $val['id']?>">Editar</a>
               </td>
             </tr>
             <?php

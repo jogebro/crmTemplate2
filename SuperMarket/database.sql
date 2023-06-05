@@ -1,4 +1,4 @@
--- Active: 1685751278085@@127.0.0.1@3306@facturacion
+-- Active: 1685705822741@@127.0.0.1@3306@campusv2
 CREATE DATABASE superMarket;
 
 SHOW DATABASES;

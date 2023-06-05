@@ -65,7 +65,7 @@
               <option value="">Seleccione cliente</option>
               <?php 
                 foreach ($cliente as $key => $valC) {
-                  $selected = ($valC['id'] == $val['id_cliente']) ? 'selected' : '';
+                  $selected = ($valC['id'] == $val['id_categoria']) ? 'selected' : '';
               ?>
                   <option value="<?php echo $valC['id'] ?>" <?php echo $selected ?>><?php echo $valC['clienteNombre'] ?></option>
               <?php 
